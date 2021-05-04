@@ -42,9 +42,14 @@ export function TaskList() {
   function handleRemoveTask(id: number) {
     // Remova uma task da listagem pelo ID
     //splice - remover item da tela
-    const filteredTasks = tasks.filter(task => task.id !== id);
+    const newTasks = [...tasks]
+    const index = newTasks.findIndex(task =>{
+      return task.id === id
+    })
 
-    setTasks(filteredTasks)
+    newTasks.splice(index, 1)
+
+    setTasks(newTasks)
   }
 
   return (
